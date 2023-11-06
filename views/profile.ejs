@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./stylesheets/style.css">
+    <title>Online-Shop</title>
+</head>
+<body>
+    <div class="header">
+        <div class="header_div">
+            <h1>Online-Shop</h1>
+        </div>
+        <div id="status_div" class="status_div">
+            <%
+            let status="";
+            if(email_exists){
+                status="This email already exists!";
+            }
+            if(invalidEmail){
+                status="Your email is invalid!"
+            }
+            if(diffrentPasswords){
+                status="Your confirmed password was diffrent!";
+            }
+            %>
+            <p id="status"><%= status %></p>
+        </div>
+        <div class="btn_div">
+            <%
+                let name=user.first_name.substring(0, 1);
+                name=name.toUpperCase();
+            %>
+            <button class="profile_logo" id="profile_logo"><%= name %></button>
+            <div class="animation_div" id="animation_div"></div>
+        </div>
+    </div>
+    <div class="body_div" id="body_div">
+        <div class="shop_layout">
+            <%
+                for(let i=0; i<products.length; i++){
+            %>
+            <div class="shop_item">
+                <img class="item_image" src="./images/<%= products[i].product_name %>.png" alt="picture couldnt load">
+                <div class="item_btn_div">
+                    <p class="product_name"><%= products[i].product_name %></p>
+                    <a href="/product/<%=products[i].product_name%>" class="view_btn">view</a>
+                    <p><%= products[i].price %>€</p>
+                    <form action="/profile/shoppingCart/add" method="post">
+                        <input type="hidden" name="product_name" value="<%= products[i].product_name %>">
+                        <input class="submit_btn" type="submit" value="+">
+                    </form>
+                </div>
+            </div>
+            <%
+                }
+            %> 
+        </div>
+    </div>
+    <div class="menu_btn" id="menu_btn">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </div>
+    <div class="menu_div" id="menu_div">
+        <div class="inner_menu_div">
+            <div>
+                <a href="/profile/shoppingCart">Shopping Cart</a>
+            </div>
+            <%
+            if(user.admin){
+            %>
+            <div>
+                <a href="/products">Change Products</a>
+            </div>
+            <%
+                }
+            %>
+            <div>
+                <a href="/Logout">Log out</a>
+            </div>
+        </div>
+    </div>
+    <div class="profile_option_div" id="profile_option_div">
+        <%
+        let date=user.date_o_b.toLocaleDateString().split(".").reverse();
+        if(date[1]<10){
+            date[1]="0"+date[1];
+        }
+        date=date.join("-");
+        %>
+        <form class="form" action="/profile/change" method="post">
+            <p>First Name</p>
+            <input type="text" name="first_name" value="<%= user.first_name %>" required>
+            <p>Last Name</p>
+            <input type="text" name="last_name" value="<%= user.last_name %>" required>
+            <p>Date of Birth</p>
+            <input type="date" name="date_o_b" value="<%= date %>" required>
+            <p>Email</p>
+            <input type="text" name="email" value="<%= user.email %>" required>
+            <p>Change Password</p>
+            <input type="checkbox" class="change_passw" id="change_passw"><br>
+            <input type="password" class="password" name="password" placeholder="Password">
+            <p class="password"></p>
+            <input type="password" class="password" name="c_password" placeholder="Confirm Password">
+            <p></p>
+            <input type="submit" class="submit" value="Save Changes">
+        </form>
+    </div>
+    <script src="./js/profile.js"></script>
+</body>
+</html>

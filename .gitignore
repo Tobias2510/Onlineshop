@@ -1,0 +1,4 @@
+/node_modules
+.env
+lines.txt
+/public/images/*

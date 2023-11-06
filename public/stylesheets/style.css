@@ -1,0 +1,337 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+
+    --body_width: 100%;
+    --body_height: 100%;
+    --btn_div_width: 200px;
+    --header_height: 100px;
+    --status_div_width: 300px;
+
+    --header_div_width: calc(var(--body_width) - var(--status_div_width) - var(--btn_div_width));
+    --body_div_height: calc(var(--body_height) - var(--header_height));
+
+    overflow: hidden;
+}
+
+.header{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header_height);
+    border: none;
+    color: rgb(255, 255, 255);
+    background-color: rgb(50, 50, 50);
+}
+
+.body_div{
+    position: fixed;
+    top: var(--header_height);
+    left: 0;
+    width: 100%;
+    height: var(--body_div_height);
+    border: none;
+    color: white;
+    background-color: rgb(45, 45, 45);
+    overflow: scroll;
+}
+
+.shop_layout{
+    position: relative;
+    top: 15%;
+    left: 10%;
+    width: 80%;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    background-color: rgba(60, 60, 60, 0.75);
+    border: solid rgba(0, 0, 0, 0.35) 3px;
+    border-radius: 25px;
+}
+
+.header_div{
+    width: var(--header_div_width);
+    display: flex;
+    align-items: center;
+}
+
+.header_div h1{
+    position: relative;
+    left: calc(var(--body_width)/2 + var(--status_div_width)/2);
+    width: 200px;
+}
+
+.status_div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+    width: var(--status_div_width);
+}
+
+.btn_div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--btn_div_width);
+}
+
+.btn{
+    width: 75px;
+    margin: 2.5px;
+    cursor: pointer;
+    background-color: rgb(150, 150, 150);
+    border: solid rgb(255, 255, 255) 2px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.btn:hover{
+    background-color: rgb(0, 255, 0);
+    color: black;
+    border: solid rgb(0, 255, 0) 2px;
+}
+
+.login_div{
+    z-index: 2;
+    position: absolute;
+    top: 20%;
+    left: calc((100% - 35%)/2);
+    width: 35%;
+    height: 70%;
+    text-align: center;
+    background-color: rgba(50, 50, 50, 0.98);
+    color: white;
+    border: solid rgb(0, 255, 0) 3px;
+    border-radius: 25px;
+}
+
+.login_div input{
+    width: 40%;
+    background-color: rgb(50, 50, 50);
+    color: white;
+    border: solid rgb(150, 150, 150) 2px;
+    border-radius: 5px;
+}
+
+.form{
+    position: relative;
+    top: 15px;
+}
+
+.submit{
+    position: relative;
+    top: 5px;
+}
+
+.submit:hover{
+    cursor: pointer;
+    background-color: rgb(0, 255, 0);
+    color: black;
+    border: none;
+}
+
+.signup_div{
+    z-index: 2;
+    position: absolute;
+    top: 10%;
+    left: calc((100% - 35%)/2);
+    width: 35%;
+    height: 85%;
+    text-align: center;
+    background-color: rgba(50, 50, 50, 0.98);
+    color: white;
+    border: solid rgb(0, 255, 0) 3px;
+    border-radius: 25px;
+}
+
+.signup_div input{
+    width: 40%;
+    background-color: rgb(50, 50, 50);
+    color: white;
+    border: solid rgb(150, 150, 150) 2px;
+    border-radius: 5px;
+}
+
+.shop_item{
+    text-align: center;
+    margin: 5px;
+    height: 250px;
+    border: solid black 3px;
+    border-radius: 15px;
+    background-color: rgba(175, 175, 175, 0.25);
+}
+
+.item_image{
+    position: relative;
+    border: solid black 3px;
+    width: 50%;
+    height: 50%;
+}
+
+.item_btn_div{
+    position: relative;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 2.5px;
+    padding: 5px 5px 5px 0px;
+    border-top: solid black 3px;
+}
+
+.view_btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    border: solid rgb(0, 0, 0) 2px;
+    border-radius: 10px;
+}
+
+.view_btn:hover{
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.submit_btn{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    color: white;
+    font-size: 25px;
+    background-color: rgba(0, 0, 0, 0);
+    border: solid rgb(0, 0, 0) 2px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.submit_btn:hover{
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.product_name{
+    overflow: hidden;
+}
+
+.admin_checkbox{
+    width: 100%;
+}
+
+.menu_btn{
+    position: absolute;
+    top: 30px;
+    z-index: 1;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.menu_btn div{
+    width: 35px;
+    height: 5px;
+    background-color: rgb(255, 255, 255);
+    margin: 6px 0;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+  
+.change .bar1 {
+    transform: translate(0, 11px) rotate(-45deg);
+}
+  
+.change .bar2 {opacity: 0;}
+  
+.change .bar3 {
+    transform: translate(0, -11px) rotate(45deg);
+}
+
+.menu_div{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.inner_menu_div{
+    position: relative;
+    top: var(--header_height);
+    color: white;
+}
+
+.inner_menu_div div{
+    padding: 10px 0 10px 10%;
+}
+
+.inner_menu_div div:hover{
+    background-color: gray;
+}
+
+.inner_menu_div a{
+    color: white;
+    text-decoration: none;
+}
+
+.profile_logo{
+    z-index: 1;
+    width: 50px;
+    height: 50px;
+    border: solid black 3px;
+    border-radius: 50px;
+    font-size: 25px;
+    background-color: rgb(150, 150, 150);
+    cursor: pointer;
+}
+
+.profile_logo:hover{
+    background-color: rgb(200, 200, 200);
+}
+
+.animation_div{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.animation{
+    animation-name: click_animation;
+    animation-duration: 0.3s;
+}
+
+@keyframes click_animation{
+    100%{
+        transform: scale(1.25, 1.25);
+    }
+}
+
+.profile_option_div{
+    z-index: 2;
+    position: absolute;
+    top: 20%;
+    left: calc((100% - 35%)/2);
+    width: 35%;
+    height: 70%;
+    text-align: center;
+    background-color: rgba(50, 50, 50, 0.98);
+    color: white;
+    border: solid rgb(0, 255, 0) 3px;
+    border-radius: 25px;
+}
+
+.profile_option_div input{
+    width: 40%;
+    background-color: rgb(50, 50, 50);
+    color: white;
+    border: solid rgb(150, 150, 150) 2px;
+    border-radius: 5px;
+}

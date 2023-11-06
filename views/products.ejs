@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./stylesheets/products.css">
+    <title>Products</title>
+</head>
+<body>
+    <div class="header_div">
+        <h1>Products</h1>
+    </div>
+    <div class="menu_btn" id="menu_btn">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </div>
+    <div class="body_div">
+        <div class="product_view">
+            <%
+                for(let i in products){
+            %>
+            <div class="shop_item">
+                <p><%= products[i].product_name %></p>
+                <p><%= products[i].price %>€</p>
+                <input type="hidden" value="<%= products[i].product_desc %>">
+                <input type="hidden" value="<%= products[i]._id %>">
+                <div>
+                    <button class="change_btn">Change</button>
+                </div>
+                <div>
+                    <form action="/products/remove" method="post">
+                        <input type="hidden" name="product_name" value="<%= products[i].product_name %>">
+                        <button type="submit" class="remove_btn">×</button>
+                    </form>
+                </div>
+            </div>
+            <%
+                if(i<products.length-1){
+            %>
+            <hr>
+            <% } %>
+            <% } %>
+        </div>
+        <div class="add_btn_div">
+            <button id="add_btn" class="add_btn">+</button>
+        </div>
+    </div>
+    <div class="menu_div" id="menu_div">
+        <div class="inner_menu_div">
+            <div>
+                <a href="/profile">Back to Profile</a>
+            </div>
+            <div>
+                <a href="/logout">Log out</a>
+            </div>
+        </div>
+    </div>
+    <div id="add_div" class="add_div">
+            <div class="add_header_div">
+                <h1>Add Product</h1>
+            </div>
+            <br>
+            <form class="form" action="/products/add" method="post" enctype="multipart/form-data">
+                <label for="product_name">Product Name</label><br>
+                <input type="text" id="product_name" name="product_name" required>
+                <p></p>
+                <label for="product_desc">Product Description</label><br>
+                <input type="text" id="product_desc" name="product_desc" required>
+                <p></p>
+                <label for="price">Price</label><br>
+                <input type="number" id="price" name="price" min="0" required>
+                <p></p>
+                <label for="picture">Picture</label><br>
+                <input type="file" class="picture" id="picture" name="picture" accept=".jpg, .png" required>
+                <p></p>
+                <input type="submit" class="submit_btn" value="Add">
+            </form>
+        </div>
+        <div id="change_div" class="change_div">
+            <div class="change_header_div">
+                <h1>Change Product</h1>
+                <button class="close_btn" id="close_btn">×</button>
+            </div>
+            <br>
+            <form class="form" action="/products/change" method="post" enctype="multipart/form-data">
+                <input type="hidden" id="id" name="id">
+                <label for="c_product_name">Product Name</label><br>
+                <input type="text" id="c_product_name" name="product_name" required>
+                <p></p>
+                <label for="c_product_desc">Product Description</label><br>
+                <input type="text" id="c_product_desc" name="product_desc" required>
+                <p></p>
+                <label for="c_price">Price</label><br>
+                <input type="number" id="c_price" min="0" name="price" required>
+                <p></p>
+                <label for="c_picture">Picture</label><br>
+                <input type="file" class="picture" id="c_picture" name="picture" accept=".jpg, .png">
+                <p></p>
+                <input type="submit" class="submit_btn" value="Save Changes">
+            </form>
+        </div>
+    <script src="./js/products.js"></script>
+</body>
+</html>

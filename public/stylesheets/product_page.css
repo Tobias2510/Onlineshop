@@ -1,0 +1,79 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+
+    --body_width: 100%;
+    --body_height: 100%;
+    --header_height: 100px;
+
+    --body_div_height: calc(var(--body_height) - var(--header_height));
+}
+
+.header_div{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header_height);
+    color: rgb(255, 255, 255);
+    background-color: rgb(50, 50, 50);
+}
+
+.body_div{
+    position: fixed;
+    top: var(--header_height);
+    left: 0;
+    width: var(--body_width);
+    height: var(--body_div_height);
+    color: white;
+    background-color: rgb(45, 45, 45);
+    overflow: auto;
+}
+
+.information_div{
+    position: absolute;
+    top: 5%;
+    left: 2.5%;
+    overflow: hidden;
+}
+
+.image{
+    width: 250px;
+    height: 250px;
+    border-radius: 25px;
+}
+
+.product_desc{
+    position: absolute;
+    top: 5%;
+    left: calc(250px + 10%);
+    width: 65%;
+    overflow: auto;
+}
+
+.price{
+    font-size: 25px;
+}
+
+.product_desc p{
+    position: relative;
+    top: -17px;
+}
+
+.submit_btn{
+    position: relative;
+    width: 150px;
+    height: 50px;
+    color: white;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: solid rgb(43, 5, 255) 2px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.submit_btn:hover{
+    background-color: rgb(43, 5, 255);
+}

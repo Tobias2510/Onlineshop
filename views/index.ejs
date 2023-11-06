@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./stylesheets/style.css">
+    <title>Online-Shop</title>
+</head>
+<body>
+    <div class="header">
+        <div class="header_div">
+            <h1>Online-Shop</h1>
+        </div>
+        <div id="status_div" class="status_div">
+            <%
+            let status="";
+            if(loginfailure){
+                status="Wrong password or wrong username!";
+            }
+            if(diffrentPasswords){
+                status="Your confirmed password was diffrent!";
+            }
+            if(email_exists){
+                status="This email already exists!";
+            }
+            if(invalidEmail){
+                status="Your email is invalid!"
+            }
+            %>
+            <p id="status"><%= status %></p>
+        </div>
+        <div class="btn_div">
+            <button class="btn" id="login_btn">Login</button>
+            <button class="btn" id="signup_btn">Sign Up</button>
+        </div>
+    </div>
+    <div class="body_div" id="body_div">
+        <div class="shop_layout">
+            <%
+                for(let i in products){
+            %>
+            <div class="shop_item">
+                <img class="item_image" src="./images/<%= products[i].product_name %>.png" alt="picture couldnt load">
+                <div class="item_btn_div">
+                    <p class="product_name"><%= products[i].product_name %></p>
+                    <a href="/product/<%=products[i].product_name%>" class="view_btn">view</a>
+                    <p><%= products[i].price %>€</p>
+                </div>
+            </div>
+            <%
+                }
+            %> 
+        </div>
+    </div>
+    <div class="signup_div" id="signup_div">
+        <h1>Sign Up</h1>
+        <form class="form" action="./register" method="post">
+            <p>First Name</p>
+            <input type="text" name="first_name" required>
+            <p>Last Name</p>
+            <input type="text" name="last_name" required>
+            <p>Date of Birth</p>
+            <input type="date" id="date" name="date_o_b" required>
+            <p>E-Mail</p>
+            <input type="text" name="email" required>
+            <p>Password</p>
+            <input type="password" name="password" required>
+            <p>Confirm Password</p>
+            <input type="password" name="c_password" required>
+            <p>Admin Code (only if you have one)</p>
+            <input type="checkbox" class="admin_checkbox" id="admin_checkbox"><br>
+            <input type="password" name="admin_code" id="admin_code" placeholder="Admin Code">
+            <br>
+            <input type="submit" class="submit" value="Sign Up">
+        </form>
+    </div>
+    <div class="login_div" id="login_div">
+        <h1>Login</h1>
+        <form class="form" action="./login" method="post">
+            <p>E-Mail</p>
+            <input type="text" name="email" required>
+            <p>Password</p>
+            <input type="password" name="password" required>
+            <p></p>
+            <input type="submit" class="submit" value="Login">
+        </form>
+    </div>
+    <script src="./js/app.js"></script>
+</body>
+</html>

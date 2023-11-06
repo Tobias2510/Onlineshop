@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/shoppingCart.css">
+    <title>Shopping Cart</title>
+</head>
+<body>
+    <div class="header_div">
+        <h1>Shopping Cart</h1>
+    </div>
+    <div class="body_div">
+        <div class="product_view">
+            <%
+            for(let x=0; x<arr.length; x++){
+                let number=0;
+                let item=arr[x];
+                for(let y in arr){
+                    if(item.product_name===arr[y].product_name){
+                        number++;
+                    }
+                }
+                arr=arr.filter(obj=>obj.product_name!==item.product_name);
+                x=-1;
+            %>
+            <div class="shop_item">
+                <p><%= item.product_name %></p>
+                <p><%= item.price %>€</p>
+                <p><%= number %>x</p>
+                <div>
+                    <form action="/profile/shoppingCart/remove" method="post">
+                        <input type="hidden" name="product_name" value="<%= item.product_name %>">
+                        <button type="submit" class="remove_btn">×</button>
+                    </form>
+                </div>
+            </div>
+            <hr class="line">
+            <%
+            }
+            %>
+            <div class="bottom_div">
+                <p id="total_price"></p>
+                <button class="check_out">Check out</button>
+            </div>
+        </div>
+    </div>
+    <div class="menu_btn" id="menu_btn">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </div>
+    <div class="menu_div" id="menu_div">
+        <div class="inner_menu_div">
+            <div>
+                <a href="/profile">Back to Profile</a>
+            </div>
+            <div>
+                <a href="/logout">Log out</a>
+            </div>
+        </div>
+    </div>
+    <script src="/js/shoppingCart.js"></script>
+</body>
+</html>
